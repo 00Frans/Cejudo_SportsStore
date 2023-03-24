@@ -51,6 +51,13 @@ namespace Donaldo_SportsStore.Models
 					Name = "Bling-Bling King",
 					Description = "Gold-plated",
 					Category = "Chess",
+					Price = 1325
+				},
+				new Product
+				{
+					Name = "Bling-Bling Queen",
+					Description = "Gold-plated",
+					Category = "Chess",
 					Price = 1225
 				}
 				);
