@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Cejudo_SportsStore.props" />
+</Project>
