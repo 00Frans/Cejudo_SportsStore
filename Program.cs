@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Donaldo_SportsStore.Models;
+using Cejudo_SportsStore.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,11 +14,15 @@ builder.Services.AddDbContext<StoreDbContext>(opts =>{
 
 //
 builder.Services.AddScoped<IStoreRepository, EFStoreRepository>();
+builder.Services.AddScoped<IOrderRepository, EFOrderRepository>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
+builder.Services.AddScoped(sp => SessionCart.GetCart(sp));
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddServerSideBlazor();
 
 var app = builder.Build();
 
@@ -34,6 +38,8 @@ app.MapControllerRoute("category", "{category}",
 	new { Controller = "Home", action = "Index", productPage = 1 });
 app.MapControllerRoute("pagination","Products/Page{productPage}",
 	new {Controller = "Home", action = "Index"});
+app.MapBlazorHub();
+app.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

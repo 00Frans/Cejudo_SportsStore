@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.DataProtection.XmlEncryption;
 
-namespace Donaldo_SportsStore.Models
+namespace Cejudo_SportsStore.Models
 {
 	public class EFStoreRepository : IStoreRepository
 	{
@@ -10,5 +10,22 @@ namespace Donaldo_SportsStore.Models
 			context = ctx;
 		}
 		public IQueryable<Product> Products => context.Products;
-	}
+
+        public void CreateProduct(Product p)
+        {
+            context.Add(p);
+            context.SaveChanges();
+        }
+
+        public void DeleteProduct(Product p)
+        {
+            context.Remove(p);
+            context.SaveChanges();
+        }
+
+        public void SaveProduct(Product p)
+        {
+            context.SaveChanges();
+        }
+    }
 }

@@ -1,4 +1,4 @@
-﻿namespace Donaldo_SportsStore.Models.ViewModels
+﻿namespace Cejudo_SportsStore.Models.ViewModels
 {
 	public class ProductsListViewModel
 	{

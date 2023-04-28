@@ -1,30 +1,39 @@
+using Cejudo_SportsStore.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Donaldo_SportsStore.Infrastructure;
-using Donaldo_SportsStore.Models;
-
-namespace Donaldo_SportsStore.Pages{
-    public class CartModel : PageModel{
-        private IStoreRepository repository;
-    public CartModel(IStoreRepository repo){
-            repository= repo;
-        }
-    public Cart? Cart { get; set; }
-    public string ReturnUrl { get; set; } = "/";
-
-    public void OnGet(string returnUrl){
-            ReturnUrl = returnUrl ?? "/";
-            Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
-        }
-    public IActionResult OnPost(long productId, string returnUrl){
-            Product? product = repository.Products
-                .FirstOrDefault(p => p.ProductID == productId);
-            if (product != null) {
-                Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
-                Cart.AddItem(product, 1);
-                HttpContext.Session.SetJson("cart", Cart);
-            }
-            return RedirectToPage(new { ReturnUrl = returnUrl });
-        }
-    }
+using Cejudo_SportsStore.Infrastructure;
+namespace Cejudo_SportsStore.Pages
+{
+	public class CartModel : PageModel
+	{
+		private IStoreRepository repository;
+		public CartModel(IStoreRepository repo, Cart cartService)
+		{
+			repository = repo;
+			Cart = cartService;
+		}
+		public Cart Cart { get; set; }
+		public string ReturnUrl { get; set; } = "/";
+		public void OnGet(string returnUrl)
+		{
+			ReturnUrl = returnUrl ?? "/";
+			//Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+		}
+		public IActionResult OnPost(long productId, string returnUrl)
+		{
+			Product? product = repository.Products
+			.FirstOrDefault(p => p.ProductID == productId);
+			if (product != null)
+			{
+				Cart.AddItem(product, 1);
+			}
+			return RedirectToPage(new { returnUrl = returnUrl });
+		}
+		public IActionResult OnPostRemove(long productId, string returnUrl)
+		{
+			Cart.RemoveLine(Cart.Lines.First(cl =>
+			cl.Product.ProductID == productId).Product);
+			return RedirectToPage(new { returnUrl = returnUrl });
+		}
+	}
 }

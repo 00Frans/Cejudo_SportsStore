@@ -1,7 +1,7 @@
 ﻿using System.Xml.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace Donaldo_SportsStore.Models
+namespace Cejudo_SportsStore.Models
 {
 	public static class SeedData
 	{

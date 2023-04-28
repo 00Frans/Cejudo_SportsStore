@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Donaldo_SportsStore.Views.Shared
+namespace Cejudo_SportsStore.Views.Shared
 {
     public class ProductSummaryModel : PageModel
     {

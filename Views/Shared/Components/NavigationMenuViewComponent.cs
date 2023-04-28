@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Donaldo_SportsStore.Models;
+using Cejudo_SportsStore.Models;
 
-namespace Donaldo_SportsStore.Components {
+namespace Cejudo_SportsStore.Components {
 	
 	public class NavigationMenuViewComponent : ViewComponent {
 		private IStoreRepository repository;

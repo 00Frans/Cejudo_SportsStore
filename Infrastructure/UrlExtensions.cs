@@ -1,4 +1,4 @@
-﻿namespace Donaldo_SportsStore.Infrastructure
+﻿namespace Cejudo_SportsStore.Infrastructure
 {
 	public static class UrlExtensions
 	{

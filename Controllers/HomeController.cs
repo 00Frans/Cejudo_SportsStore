@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Donaldo_SportsStore.Models;
-using Donaldo_SportsStore.Models.ViewModels;
+using Cejudo_SportsStore.Models;
+using Cejudo_SportsStore.Models.ViewModels;
 
-namespace Donaldo_SportsStore.Controllers
+namespace Cejudo_SportsStore.Controllers
 {
 	public class HomeController : Controller{
 		private IStoreRepository repository;

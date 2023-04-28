@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace Donaldo_SportsStore.Infrastructure{
+namespace Cejudo_SportsStore.Infrastructure{
 	public static class SessionExtensions{
 		public static void SetJson(this ISession session, string key, object value){
 			session.SetString(key, JsonSerializer.Serialize(value));

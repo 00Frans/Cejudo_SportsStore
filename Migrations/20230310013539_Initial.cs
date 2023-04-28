@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Donaldo_SportsStore.Migrations
+namespace Cejudo_SportsStore.Migrations
 {
     public partial class Initial : Migration
     {
